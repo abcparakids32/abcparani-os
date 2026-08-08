@@ -1,0 +1,153 @@
+// 1. LISTA DE PALABRAS CON IMÁGENES DE INTERNET YA INCLUIDAS
+const bancoPalabras = [
+    {
+        palabra: "MAMA",
+        silabas: ["MA", "MA"],
+        completa: "MAMÁ",
+        // Imagen infantil de una mamá abrazando
+        imagen: "https://freepik.com" 
+    },
+    {
+        palabra: "PAPA",
+        silabas: ["PA", "PA"],
+        completa: "PAPÁ",
+        // Imagen infantil de un papá con su hijo
+        imagen: "https://freepik.com"
+    },
+    {
+        palabra: "SAPO",
+        silabas: ["SA", "PO"],
+        completa: "SAPO",
+        // Imagen de un sapito verde animado
+        imagen: "https://freepik.com"
+    },
+    {
+        palabra: "LUNA",
+        silabas: ["LU", "NA"],
+        completa: "LUNA",
+        // Imagen de una luna sonriente con estrellas
+        imagen: "https://freepik.com"
+    }
+];
+
+let indiceActual = 0;
+let letrasCorrectas = 0;
+
+const contenedorCasillas = document.getElementById('contenedor-casillas');
+const contenedorLetras = document.getElementById('contenedor-letras');
+const imagenAyuda = document.getElementById('dibujo-ayuda');
+const flecha = document.getElementById('flechaLectora');
+
+// Creamos el sonido de aplausos directamente desde internet
+const sonidoAplausos = new Audio("https://google.com");
+
+function cargarPalabra() {
+    letrasCorrectas = 0;
+    flecha.className = "flecha-oculta";
+    contenedorCasillas.innerHTML = "";
+    contenedorLetras.innerHTML = "";
+    
+    let datosActuales = bancoPalabras[indiceActual];
+    
+    // Aquí se coloca la foto automáticamente en la pantalla
+    imagenAyuda.src = datosActuales.imagen;
+
+    // Crear casillas
+    for (let i = 0; i < datosActuales.palabra.length; i++) {
+        let casilla = document.createElement('div');
+        casilla.className = "casilla";
+        casilla.id = "casilla-" + i;
+        casilla.setAttribute('data-esperado', datosActuales.palabra[i]);
+        casilla.innerText = "?";
+        
+        casilla.addEventListener('dragover', (e) => e.preventDefault());
+        casilla.addEventListener('drop', (e) => soltarLetra(e, casilla));
+        
+        contenedorCasillas.appendChild(casilla);
+    }
+
+    // Crear letras abajo mezcladas
+    let letrasMezcladas = datosActuales.palabra.split('').sort(() => Math.random() - 0.5);
+    
+    letrasMezcladas.forEach((letra, index) => {
+        let bloqueLetra = document.createElement('div');
+        bloqueLetra.className = "letra";
+        bloqueLetra.draggable = true;
+        bloqueLetra.id = "letra-" + index;
+        bloqueLetra.innerText = letra;
+        
+        bloqueLetra.addEventListener('dragstart', (e) => {
+            e.dataTransfer.setData('text', e.target.innerText);
+            e.dataTransfer.setData('id', e.target.id);
+        });
+        
+        contenedorLetras.appendChild(bloqueLetra);
+    });
+}
+
+function soltarLetra(e, casilla) {
+    const letraArrastrada = e.dataTransfer.getData('text');
+    const idArrastrado = e.dataTransfer.getData('id');
+    const letraEsperada = casilla.getAttribute('data-esperado');
+
+    if (letraArrastrada === letraEsperada && casilla.innerText === "?") {
+        casilla.innerText = letraArrastrada;
+        casilla.style.backgroundColor = "#9CFF2E";
+        casilla.style.border = "5px solid #21922C";
+        casilla.style.color = "#000000";
+        
+        document.getElementById(idArrastrado).style.visibility = 'hidden';
+        decirVoz(letraArrastrada);
+        letrasCorrectas++;
+
+        if (letrasCorrectas === bancoPalabras[indiceActual].palabra.length) {
+            flecha.className = "flecha-visible";
+        }
+    }
+}
+
+function leerPalabra() {
+    let datos = bancoPalabras[indiceActual];
+    let tiempo = 0;
+
+    // 1. Lee las sílabas despacio
+    datos.silabas.forEach((silaba) => {
+        setTimeout(() => {
+            decirVoz(silaba);
+        }, tiempo);
+        tiempo += 1200;
+    });
+
+    // 2. Dice la palabra completa y suenan los aplausos
+    setTimeout(() => {
+        decirVoz("¡" + datos.completa + "!");
+        
+        // ¡Aquí suenan los aplausos!
+        sonidoAplausos.play();
+        
+        indiceActual++;
+        if (indiceActual >= bancoPalabras.length) {
+            indiceActual = 0; 
+        }
+        
+        // Espera 3 segundos celebrando antes de pasar al siguiente dibujo
+        setTimeout(() => {
+            cargarPalabra();
+        }, 3000);
+
+    }, tiempo);
+}
+
+function decirVoz(texto) {
+    const lectura = new SpeechSynthesisUtterance(texto);
+    lectura.lang = 'es-ES';
+    lectura.rate = 0.8;
+    window.speechSynthesis.speak(lectura);
+}
+
+function reiniciarJuego() {
+    indiceActual = 0;
+    cargarPalabra();
+}
+
+window.onload = cargarPalabra;

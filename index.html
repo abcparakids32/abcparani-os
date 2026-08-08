@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABC Kids - Aprendiendo a Leer</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <header class="barra-superior">
+        <div class="logo">🌟 ¡ABC PARA NIÑOS! 🌟</div>
+        <button onclick="reiniciarJuego()" class="btn-inicio">🏠 Inicio</button>
+    </header>
+
+    <main class="pantalla-juego">
+        
+        <!-- DIBUJO O IMAGEN EN CIMA DE LAS CASILLAS -->
+        <div class="contenedor-imagen">
+            <img id="dibujo-ayuda" src="" alt="Dibujo educativo">
+        </div>
+        
+        <!-- Las casillas se crearán aquí adentro automáticamente con JS -->
+        <div class="zona-construccion" id="contenedor-casillas"></div>
+
+        <!-- Botón de la Flecha Lectora -->
+        <button id="flechaLectora" class="flecha-oculta" onclick="leerPalabra()">➡️ LEER PALABRA</button>
+
+        <!-- Las letras para arrastrar se crearán aquí adentro automáticamente con JS -->
+        <div class="almacen-letras" id="contenedor-letras"></div>
+
+    </main>
+
+    <script src="juego.js"></script>
+</body>
+</html>
