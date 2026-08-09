@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABC PARA NIÑOS - Login</title>
+    <title>ABC para niños - Login</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 
     <!-- PANTALLA DE INICIO DE SESIÓN -->
-    <div id="pantalla-login" class="login-contenedor">
+    <div id="pantalla-login" class="login-contenedor" style="display: none;">
         <div class="login-tarjeta">
             <h2>🌟 ¡BIENVENIDO A ABC PARA NIÑOS! 🌟</h2>
             <p>Escribe tus datos para entrar a jugar:</p>
@@ -18,15 +18,23 @@
             <input type="password" id="clave-input" placeholder="🔑 Contraseña">
             
             <button onclick="validarIngreso()" class="btn-entrar">¡A JUGAR! 🎮</button>
+            
+            <!-- BOTÓN SECRETO PARA REGISTRAR UN HIJO -->
+            <button onclick="solicitarRegistro()" class="btn-solicitar">📝 Registrar un hijo nuevo</button>
+            
             <p id="mensaje-error" class="error-oculto">❌ Datos incorrectos. ¡Inténtalo de nuevo!</p>
         </div>
     </div>
 
-    <!-- EL JUEGO (Se mantiene oculto al principio con CSS) -->
+    <!-- EL JUEGO -->
     <div id="interfaz-juego" style="display: none;">
         <header class="barra-superior">
             <div class="logo">🌟 ¡BIENVENIDO A ABC PARA NIÑOS! 🌟</div>
-            <button onclick="reiniciarJuego()" class="btn-inicio">🏠 Inicio</button>
+            <div class="botones-barra">
+                <button onclick="reiniciarJuego()" class="btn-inicio">🏠 Inicio</button>
+                <!-- BOTÓN DE CERRAR SESIÓN -->
+                <button onclick="cerrarSesion()" class="btn-cerrar">🚪 Salir</button>
+            </div>
         </header>
 
         <main class="pantalla-juego">
@@ -39,6 +47,10 @@
             <div class="almacen-letras" id="contenedor-letras"></div>
         </main>
     </div>
+
+    <script src="juego.js"></script>
+</body>
+</html>
 
     <script src="juego.js"></script>
 </body>
