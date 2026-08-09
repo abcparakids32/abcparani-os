@@ -1,15 +1,15 @@
 // 1. LISTA DE PALABRAS CON IMÁGENES DE INTERNET YA INCLUIDAS
 const bancoPalabras = [
     {
-        palabra: "MAMA",
-        silabas: ["MA", "MA"],
+        palabra: "MAMÁ",
+        silabas: ["MA", "MÁ"],
         completa: "MAMÁ",
         // Imagen infantil de una mamá abrazando
         imagen: "https://freepik.com" 
     },
     {
-        palabra: "PAPA",
-        silabas: ["PA", "PA"],
+        palabra: "PAPÁ",
+        silabas: ["PA", "PÁ"],
         completa: "PAPÁ",
         // Imagen infantil de un papá con su hijo
         imagen: "https://freepik.com"
