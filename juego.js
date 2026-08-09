@@ -13,6 +13,30 @@ const bancoPalabras = [
         imagen: "papa.jpg" 
     },
     {
+        palabra: "JUGUETES",
+        silabas: ["JU", "GUE", "TES"],
+        completa: "JUGUETES",
+        imagen: "JUEGUETES.jpg" 
+    },
+    {
+        palabra: "CARRO",
+        silabas: ["CA", "RRO"],
+        completa: "CARRO",
+        imagen: "CARRO.jpg" 
+    },    
+    {
+        palabra: "OSO",
+        silabas: ["O", "SO"],
+        completa: "OSO",
+        imagen: "OSO.jpg" 
+    },
+    {
+        palabra: "AVION",
+        silabas: ["A", "VI", "ON"],
+        completa: "AVIÓN",
+        imagen: "AVION.jpg" 
+    },
+    {
         palabra: "SAPO",
         silabas: ["SA", "PO"],
         completa: "SAPO",
