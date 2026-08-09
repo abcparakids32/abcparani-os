@@ -3,33 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABC Kids - Aprendiendo a Leer</title>
+    <title>ABC PARA NIÑOS - Login</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 
-    <header class="barra-superior">
-        <div class="logo">🌟 ¡ABC PARA NIÑOS! 🌟</div>
-        <button onclick="reiniciarJuego()" class="btn-inicio">🏠 Inicio</button>
-    </header>
-
-    <main class="pantalla-juego">
-        
-        <!-- DIBUJO O IMAGEN EN CIMA DE LAS CASILLAS -->
-        <div class="contenedor-imagen">
-            <img id="dibujo-ayuda" src="" alt="Dibujo educativo">
+    <!-- PANTALLA DE INICIO DE SESIÓN -->
+    <div id="pantalla-login" class="login-contenedor">
+        <div class="login-tarjeta">
+            <h2>🌟 ¡BIENVENIDO A ABC PARA NIÑOS! 🌟</h2>
+            <p>Escribe tus datos para entrar a jugar:</p>
+            
+            <input type="text" id="usuario-input" placeholder="👤 Nombre de usuario">
+            <input type="password" id="clave-input" placeholder="🔑 Contraseña">
+            
+            <button onclick="validarIngreso()" class="btn-entrar">¡A JUGAR! 🎮</button>
+            <p id="mensaje-error" class="error-oculto">❌ Datos incorrectos. ¡Inténtalo de nuevo!</p>
         </div>
-        
-        <!-- Las casillas se crearán aquí adentro automáticamente con JS -->
-        <div class="zona-construccion" id="contenedor-casillas"></div>
+    </div>
 
-        <!-- Botón de la Flecha Lectora -->
-        <button id="flechaLectora" class="flecha-oculta" onclick="leerPalabra()">➡️ LEER PALABRA</button>
+    <!-- EL JUEGO (Se mantiene oculto al principio con CSS) -->
+    <div id="interfaz-juego" style="display: none;">
+        <header class="barra-superior">
+            <div class="logo">¡ABC KIDS! 🌟</div>
+            <button onclick="reiniciarJuego()" class="btn-inicio">🏠 Inicio</button>
+        </header>
 
-        <!-- Las letras para arrastrar se crearán aquí adentro automáticamente con JS -->
-        <div class="almacen-letras" id="contenedor-letras"></div>
-
-    </main>
+        <main class="pantalla-juego">
+            <div class="contenedor-imagen">
+                <img id="dibujo-ayuda" src="" alt="Cargando dibujo...">
+            </div>
+            
+            <div class="zona-construccion" id="contenedor-casillas"></div>
+            <button id="flechaLectora" class="flecha-oculta" onclick="leerPalabra()">➡️ LEER PALABRA</button>
+            <div class="almacen-letras" id="contenedor-letras"></div>
+        </main>
+    </div>
 
     <script src="juego.js"></script>
 </body>
