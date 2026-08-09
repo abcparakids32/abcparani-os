@@ -4,13 +4,13 @@ const bancoPalabras = [
         palabra: "MAMA",
         silabas: ["MA", "MA"],
         completa: "MAMÁ",
-        imagen: "mi-mama.jpg" 
+        imagen: "mimama.jpg" 
     },
     {
         palabra: "PAPA",
         silabas: ["PA", "PA"],
         completa: "PAPÁ",
-        imagen: "mi-papa.jpg" 
+        imagen: "mipapa.jpg" 
     },
     {
         palabra: "SAPO",
@@ -37,8 +37,8 @@ const sonidoAplausos = new Audio("https://google.com");
 
 // 2. LISTA DE USUARIOS AUTORIZADOS
 const listaUsuarios = [
-    { usuario: "pedrito", clave: "abc5" },
-    { usuario: "maria", clave: "star12" },
+    { usuario: "naomi", clave: "naomi01" },
+    { usuario: "diego", clave: "diego01" },
     { usuario: "lucas", clave: "niño5" },
     { usuario: "invitado", clave: "1234" }
 ];
@@ -189,4 +189,3 @@ function solicitarRegistro() {
 
 // AL CARGAR LA PÁGINA: Arranca la revisión de la memoria
 window.onload = verificarSesionGuardada;
-
