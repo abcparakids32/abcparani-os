@@ -5,14 +5,14 @@ const bancoPalabras = [
         silabas: ["MA", "MÁ"],
         completa: "MAMÁ",
         // Imagen infantil de una mamá abrazando
-        imagen: "https://freepik.com" 
+        imagen: "mama.jpg" 
     },
     {
         palabra: "PAPÁ",
         silabas: ["PA", "PÁ"],
         completa: "PAPÁ",
         // Imagen infantil de un papá con su hijo
-        imagen: "https://freepik.com"
+        imagen: "papa.jpg"
     },
     {
         palabra: "SAPO",
