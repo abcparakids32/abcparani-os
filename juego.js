@@ -186,3 +186,26 @@ function validarIngreso() {
         decirVoz("Usuario o contraseña incorrectos. Inténtalo otra vez.");
     }
 }
+// --- FUNCIONES EXTRA: CERRAR SESIÓN Y REGISTRAR HIJO ---
+
+function cerrarSesion() {
+    // Borramos el usuario de la memoria del teléfono/PC
+    localStorage.removeItem("usuarioABC");
+    
+    // Decimos adiós con voz de robot infantil
+    decirVoz("¡Adiós! Vuelve pronto.");
+    
+    // Escondemos el juego y volvemos a mostrar la pantalla de login limpia
+    document.getElementById("interfaz-juego").style.display = "none";
+    document.getElementById("pantalla-login").style.display = "flex";
+    
+    // Limpiamos los cuadros de texto
+    document.getElementById("usuario-input").value = "";
+    document.getElementById("clave-input").value = "";
+    document.getElementById("mensaje-error").style.display = "none";
+}
+
+function solicitarRegistro() {
+    // Ventana flotante que le avisa al papá qué hacer
+    alert("👋 ¡Hola papá o mamá!\n\nPara registrar a tu hijo y asignarle un usuario único, por favor envíame un mensaje por WhatsApp o correo diciendo el nombre de tu pequeño. ¡Yo lo activaré de inmediato!");
+}
