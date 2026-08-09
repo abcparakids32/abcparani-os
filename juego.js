@@ -151,3 +151,40 @@ function reiniciarJuego() {
 }
 
 window.onload = cargarPalabra;
+// --- SISTEMA DE MÚLTIPLES USUARIOS Y CONTRASEÑAS ---
+
+// Aquí creas la lista de todos los niños autorizados. ¡Añade los que quieras!
+const listaUsuarios = [
+    { usuario: "naomi", clave: "naomi01" },
+    { usuario: "ian", clave: "ian01" },
+    { usuario: "diego", clave: "diego01" },
+    { usuario: "rihna", clave: "rihna01" },
+    { usuario: "chritopher", clave: "chritopher01" },
+    { usuario: "oscar", clave: "oscar01" },
+    { usuario: "douglas", clave: "douglas01" },
+    { usuario: "harley", clave: "harley01" },
+    { usuario: "invitado", clave: "1234" }
+];
+
+function validarIngreso() {
+    // Convertimos a minúsculas por si el niño escribe con mayúsculas por error
+    const usuarioIngresado = document.getElementById("usuario-input").value.trim().toLowerCase();
+    const claveIngresada = document.getElementById("clave-input").value.trim();
+    const mensajeError = document.getElementById("mensaje-error");
+
+    // Buscamos si los datos ingresados coinciden con alguien de nuestra lista
+    const usuarioEncontrado = listaUsuarios.find(u => u.usuario === usuarioIngresado && u.clave === claveIngresada);
+
+    if (usuarioEncontrado) {
+        // ¡Éxito! Escondemos la pantalla de login y activamos el juego
+        document.getElementById("pantalla-login").style.display = "none";
+        document.getElementById("interfaz-juego").style.display = "block";
+        
+        // El juego saluda al niño por su propio nombre
+        decirVoz("¡Hola " + usuarioIngresado + "! Bienvenido a ABC Kids. ¡Vamos a jugar!");
+    } else {
+        // Si no existe o la clave está mal, muestra el error en rojo
+        mensajeError.style.display = "block";
+        decirVoz("Usuario o contraseña incorrectos. Inténtalo otra vez.");
+    }
+}
