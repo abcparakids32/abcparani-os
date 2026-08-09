@@ -4,13 +4,13 @@ const bancoPalabras = [
         palabra: "MAMA",
         silabas: ["MA", "MA"],
         completa: "MAMÁ",
-        imagen: "mimama.jpg" 
+        imagen: "mama.jpg" 
     },
     {
         palabra: "PAPA",
         silabas: ["PA", "PA"],
         completa: "PAPÁ",
-        imagen: "mipapa.jpg" 
+        imagen: "papa.jpg" 
     },
     {
         palabra: "SAPO",
